@@ -1,0 +1,160 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using System;
+using Unity.VisualScripting;
+
+public class ItemSlot : MonoBehaviour, IPointerClickHandler
+{
+    // Item DATA
+
+
+    public string itemName;
+    public int quantity;
+    public Sprite itemSprite;
+    public bool isFull;
+    public Sprite emptySprite;
+
+    public string itemType;
+
+
+
+    // ITEM Slot
+
+
+    [SerializeField]
+
+    private TMP_Text quantityText;
+
+    [SerializeField]
+
+    private Image itemImage;
+
+
+    public GameObject selectedShader;
+    public bool thisItemSelected;
+
+
+    private InventoryManager inventoryManager;
+
+    private void Start()
+    {
+        inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
+    }
+
+
+    public void AddItem(string itemName, int quantity, Sprite itemSprite, string itemType)
+    {
+
+       
+
+
+        //update NAME
+        this.itemName = itemName;
+
+        this.quantity = quantity;
+
+
+        //update image
+
+        this.itemSprite = itemSprite;
+
+
+        // update type
+
+        this.itemType = itemType;
+
+        isFull = true;
+
+        quantityText.text = quantity.ToString();
+        quantityText.enabled = true;
+
+        itemImage.sprite = itemSprite;
+
+        
+
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        //throw new System.NotImplementedException();
+
+
+        if(eventData.button == PointerEventData.InputButton.Left)
+        {
+            OnLeftClick();
+        }
+
+
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            OnRightClick();
+        }
+    }
+
+    public void OnLeftClick()
+
+
+
+    {
+
+        if (thisItemSelected)
+        {
+            bool usable = inventoryManager.UseItem(itemName);
+
+            if (usable)
+            {
+
+                this.quantity -= 1;
+                quantityText.text = this.quantity.ToString();
+
+                if (this.quantity <= 0)
+
+                    EmptySlot();
+
+                Debug.Log(itemName + " activated");
+
+            }
+
+            
+
+        }
+
+        else
+        {
+
+            inventoryManager.DeselectAllSlots();
+
+            selectedShader.SetActive(true);
+            thisItemSelected = true;
+
+        }
+
+        
+
+
+        Debug.Log(itemName + " selected");
+    }
+
+    private void EmptySlot()
+    {
+        quantityText.enabled = false;
+        itemImage.sprite = emptySprite;
+        
+        itemName = "";
+
+        
+        itemSprite = emptySprite;
+
+    }
+
+    public void OnRightClick()
+    {
+
+    }
+
+
+}
