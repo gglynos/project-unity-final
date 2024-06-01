@@ -21,21 +21,7 @@ public class UiView : MonoBehaviour
         SetCondition(defaultCondition);
     }
 
-    public void Update()
-    {
-        // Check if the button is on
-          if (buttonOn)
-        {
-
-            
-            // Check if the user presses the Enter key
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                // Call the restartLevel() function
-                restartLevel();
-            }
-        }  
-    }
+    
 
 
 
@@ -44,23 +30,9 @@ public class UiView : MonoBehaviour
         textObject.text = condition;
     }
 
-    public void ToggleEndButton(bool on)
-    {
-        buttonOn = on;
+    
 
-        if (on)
-        {
-            Debug.Log("warning not implemented");
-
-            
-        }
-    }   
-
-    private void restartLevel()
-    {
-        int currentScene=SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentScene);
-    }
+    
 
     public void OnKeyFound()
     {

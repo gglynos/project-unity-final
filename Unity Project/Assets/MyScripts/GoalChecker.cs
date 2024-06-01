@@ -23,15 +23,28 @@ public class goalChecker : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Goal" && GameManager.keyIsTaken) 
-        {
 
-            
-            GameManager.OnGoalReached();
+
+        
+
+
+        if (other.tag == "Goal" )
+        {
+            if (GameManager.keyIsTaken)
+            {
+
+                GameManager.OnGoalReached();
+            }
+            else
+            {
+                GameManager.OnGoalWithoutTreasure();
+            }
 
 
 
         }
+
+        
 
        
     }

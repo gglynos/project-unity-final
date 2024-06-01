@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public static ButtonScript resetButton;
 
 
-    
+    public float delayTime = 1f;
 
 
 
@@ -52,21 +52,41 @@ public class GameManager : MonoBehaviour
         {
             uiView.SetCondition("Congratulations, You Won");
 
-            uiView.ToggleEndButton(true);
+            
 
-            Time.timeScale = 0;
+            Time.timeScale = 0.5f;
 
-            SceneManager.LoadScene("MainMenu");
+            // Start the coroutine to load the scene with a delay
+            GameManager instance = FindObjectOfType<GameManager>();
+            instance.StartCoroutine(instance.LoadSceneWithDelay());
 
         }
         else
         {
-            uiView.SetCondition("Look for the treasure first");
+            Debug.Log("collided with goal");
+
+            
         }
     }
 
+    private IEnumerator LoadSceneWithDelay()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("MainMenu");
+    }
 
-    
+
+
+    public static void OnGoalWithoutTreasure()
+    {
+
+        uiView.SetCondition("Look for the treasure first");
+    }
+
+
+
+
+
     public static void OnGameIsLost()
     {
 
