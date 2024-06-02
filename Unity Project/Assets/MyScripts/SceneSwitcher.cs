@@ -38,7 +38,7 @@ public class SceneSwitcher : MonoBehaviour
             GameManager.GameIsLost = true;
 
             GameManager.OnGameIsLost();
-           // Time.timeScale = 0.05f;
+           
 
             StartCoroutine(LoadSceneAfterDelay());
         }

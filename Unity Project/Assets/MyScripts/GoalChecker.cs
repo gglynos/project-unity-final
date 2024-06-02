@@ -30,15 +30,12 @@ public class goalChecker : MonoBehaviour
 
         if (other.tag == "Goal" )
         {
-            if (GameManager.keyIsTaken)
-            {
+            
+            
 
                 GameManager.OnGoalReached();
             }
-            else
-            {
-                GameManager.OnGoalWithoutTreasure();
-            }
+            
 
 
 
@@ -47,7 +44,7 @@ public class goalChecker : MonoBehaviour
         
 
        
-    }
+    
 
 
 }

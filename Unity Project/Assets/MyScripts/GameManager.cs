@@ -37,12 +37,12 @@ public class GameManager : MonoBehaviour
 
         UnityEngine.Cursor.lockState = CursorLockMode.None;
 
-        //uiView.SetCondition("Find the key and exit");
+        
     }
 
     public static void OnKeyFound()
     {
-        keyIsTaken = true;
+        
         uiView.SetCondition("You found the treasure, now find the exit");
     }
 
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
 
             
 
-            Time.timeScale = 0.5f;
+            
 
             // Start the coroutine to load the scene with a delay
             GameManager instance = FindObjectOfType<GameManager>();
@@ -64,8 +64,8 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.Log("collided with goal");
+            uiView.SetCondition("Look for the treasure first");
 
-            
         }
     }
 
@@ -77,12 +77,7 @@ public class GameManager : MonoBehaviour
 
 
 
-    public static void OnGoalWithoutTreasure()
-    {
-
-        uiView.SetCondition("Look for the treasure first");
-    }
-
+    
 
 
 

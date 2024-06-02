@@ -9,7 +9,7 @@ using Unity.VisualScripting;
 
 public class ItemSlot : MonoBehaviour, IPointerClickHandler
 {
-    // Item DATA
+    
 
 
     public string itemName;
@@ -22,7 +22,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
 
 
-    // ITEM Slot
+    
 
 
     [SerializeField]
@@ -96,9 +96,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     }
 
     public void OnLeftClick()
-
-
-
     {
 
         if (thisItemSelected)
