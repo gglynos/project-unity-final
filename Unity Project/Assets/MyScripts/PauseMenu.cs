@@ -13,8 +13,6 @@ public class PauseMenu : MonoBehaviour
 
     public TMP_Text muteText;
 
-    //private string defaultCondition = "MUTE";
-    //private string unmuteCondition = "UNMUTE";
 
 
     private bool isMuted = false; // Variable to keep track of mute status
