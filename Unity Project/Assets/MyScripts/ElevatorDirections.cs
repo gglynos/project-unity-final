@@ -13,7 +13,7 @@ public class ElevatorDirections : MonoBehaviour
         if (other.tag == "Player")
         {
 
-            Debug.Log("You Lose");
+            Debug.Log("transporter called");
 
 
             uiView.SetCondition("Press F to call the Transporter");

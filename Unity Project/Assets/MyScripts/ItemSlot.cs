@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class ItemSlot : MonoBehaviour, IPointerClickHandler
 {
@@ -36,6 +37,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     public GameObject selectedShader;
     public bool thisItemSelected;
+    public UiView uiView;
 
 
     private InventoryManager inventoryManager;
@@ -43,6 +45,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     private void Start()
     {
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
+
+        uiView = FindObjectOfType<UiView>();
     }
 
 
@@ -97,7 +101,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     public void OnLeftClick()
     {
-
+        uiView.SetCondition(" ");
         if (thisItemSelected)
         {
             bool usable = inventoryManager.UseItem(itemName);
@@ -113,6 +117,15 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
                     EmptySlot();
 
                 Debug.Log(itemName + " activated");
+
+            }
+
+            else if (!usable)
+            {
+                uiView.SetCondition("Item is not usable");
+
+               
+
 
             }
 
@@ -135,6 +148,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
         Debug.Log(itemName + " selected");
     }
+
+    
 
     private void EmptySlot()
     {

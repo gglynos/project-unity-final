@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
             instance.StartCoroutine(instance.LoadSceneWithDelay());
 
         }
-        else
+        else if (keyIsTaken == false)
         {
             Debug.Log("collided with goal");
             uiView.SetCondition("Look for the treasure first");

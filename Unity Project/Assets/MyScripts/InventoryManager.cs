@@ -12,13 +12,15 @@ public class InventoryManager : MonoBehaviour
     public ItemSlot[] itemSlot;
 
     public ItemSO[] itemSOs;
+
+    private UiView uiView;  
     
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        uiView = FindObjectOfType<UiView>();
     }
 
     // Update is called once per frame
@@ -34,7 +36,7 @@ public class InventoryManager : MonoBehaviour
             InventoryMenu.SetActive(false); 
             menuActivated = false;
             GameManager.LockMouse();
-
+            uiView.SetCondition(" ");
         }
 
         else if (Input.GetKeyDown(KeyCode.I) && !menuActivated)

@@ -17,14 +17,7 @@ public class LoseMenu : MonoBehaviour
         Time.timeScale = 1f;
 
         // Check if playButton is assigned before setting it as the selected GameObject
-        if (playButton != null)
-        {
-            EventSystem.current.SetSelectedGameObject(playButton);
-        }
-        else
-        {
-            Debug.LogWarning("PlayButton GameObject is not assigned in the MainMenu script.");
-        }
+        
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
